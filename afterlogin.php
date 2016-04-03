@@ -53,10 +53,11 @@
 
 
         <li class="bold"><a class=fo href="index.php" class="waves-effect waves-teal">Home</a></li>
-        <li class="bold"><a href="marketplace.php" class="waves-effect waves-teal">Marketplace</a></li>
+        <li class="bold"><a href="marketplace.php" class="waves-effect waves-teal">The Proxy Place</a></li>
         
         <li class="bold"><a href="myrequests.php" class="waves-effect waves-teal">My Requests</a></li>
         <li class="bold"><a href="contact.html" class="waves-effect waves-teal">Contact Us</a></li>
+  <li class="bold"><a href="logout.php" class="waves-effect waves-teal">Logout</a></li>
       </ul>
 
       </a>
@@ -71,7 +72,7 @@
 
 
 <div style="position:relative;left:400px;top:300px;">
-    <a href="marketplace.php"> <button class='lined thick'>Marketplace</button> </a>
+    <a href="marketplace.php"> <button class='lined thick'>The Proxy Place</button> </a>
       </div>
       <div style="position:relative;left:700px;top:82px;"> 
   <a href="marketplace.php"> <button class='lined thick'>I am here to help</button> </a>
