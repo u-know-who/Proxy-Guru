@@ -41,14 +41,14 @@ if(isset($_POST['btn-signup']))
 		if(mysql_query("INSERT INTO users(user_email,user_pass,first_name,last_name,ver_code) VALUES('$email','$upass','$first_name','$last_name','$ver_code')"))
 		{
 			?>
-			<script>alert('successfully registered ');</script>
+			<script>alert('Successfully Registered ');</script>
 			<?php
 				header("Location: mail.php");
 		}
 		else
 		{
 			?>
-			<script>alert('error while registering you...');</script>
+			<script>alert('Error While Registering You...');</script>
 			<?php
 		}		
 	}
