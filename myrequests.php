@@ -1,4 +1,4 @@
-marke<?php
+<?php
 session_start();
 include_once 'dbconnect.php';
 if(!isset($_SESSION['user'])!="")
@@ -86,11 +86,12 @@ if(!isset($_SESSION['user'])!="")
        <!-- <a id = "bar" style="font-family: Roboto, sans-serif">-->
 
 
-        <li class="bold"><a class=fo href="home.html" class="waves-effect waves-teal">Home</a></li>
+        <li class="bold"><a class=fo href="home.php" class="waves-effect waves-teal">Home</a></li>
         <li class="bold"><a href="marketplace.php" class="waves-effect waves-teal">The Proxy Place</a></li>
         
         <li class="bold"><a href="myrequests.php" class="waves-effect waves-teal">My Requests</a></li>
         <li class="bold"><a href="contact.php" class="waves-effect waves-teal">Contact Us</a></li>
+          <li class="bold"><a href="logout.php" class="waves-effect waves-teal">Logout</a></li>
       </ul>
 
       </a>
@@ -186,7 +187,8 @@ var xhttp = new XMLHttpRequest();
   xhttp.send();
   xhttp.open("GET", "anon_mail.php?request_id="+y+"&user_id="+x+"", true);
   xhttp.send();
-
+//
+  
 
 
 
