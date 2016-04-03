@@ -107,7 +107,7 @@ if(isset($_POST['btn-signup']))
 <td colspan="50"><button type="submit" name="btn-signup">Add Proxy Request</button></td>
 </tr>
 <tr>
-<td><a href="home.html">Go Back</a></td>
+<td><a href="afterlogin.php">Home</a></td>
 </tr>
 </table>
 </form>
