@@ -1,256 +1,117 @@
 <?php
 session_start();
+if(isset($_SESSION['user'])=="")
+{
+	header("Location: home.php");
+}
 include_once 'dbconnect.php';
 
-if(!isset($_SESSION['user']))
+if(isset($_POST['btn-signup']))
 {
-	header("Location: index.php");
-}
+	$date = mysql_real_escape_string($_POST['date']);
+	$treat = mysql_real_escape_string($_POST['treat']);
+	$user_id = mysql_real_escape_string($_POST['user_id']);
+	$teacher = mysql_real_escape_string($_POST['teacher']);
+	$other = mysql_real_escape_string($_POST['other']);
+	$batch = mysql_real_escape_string($_POST['batch']);
+	$section = mysql_real_escape_string($_POST['section']);
 
-$res=mysql_query("SELECT * FROM users WHERE user_id=".$_SESSION['user']);
-$userRow=mysql_fetch_array($res);
-$active=$userRow['active'];
-if($active==0)
-{
-		header("Location: verify.php");
-}
+	$date = trim($date);
+	$treat = trim($treat);
+	$user_id = trim($user_id);
+	$teacher = trim($teacher);
+	$other = trim($other);
+	$batch = trim($batch);
+	$section = trim($section) ;
 
-?>
+	if(mysql_query("INSERT INTO request(date,treat,user_id,teacher,other,batch,section) VALUES('$date','$treat','$user_id','$teacher','$other','$batch','$section')"))
+	{
+		?>
+		<script>alert('successfully submitted');</script>
+		<?php
+			
+	}
+	else
+	{
+		?>
+		<script>alert('error while registering you...');</script>
+		<?php
+	}		
 
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-  <title>Home</title>
-  <link rel="icon" href="images/new.png" sizes="32x32">
-
-  <!-- CSS  -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-</head>
-<body>
-<a id="home">
-<div class="navbar-fixed">
-</a>
-  <nav class="#5f5f5f black-we-want" role="navigation">
-
-    <div class="nav-wrapper container">
-      <a id="logo-container" href="#home" class="brand-logo">Home</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="#mission">Mission</a></li>
-        <li><a href = "#about_us">About Us</a></li>
-	<li><a href = "#services">Privacy Policy</a></li>
-	<li><a href = "#contact">Contact Us</a></li>
-	<li><a href = "login.php">Login</a></li>
-	<li><a href = "register.php">Signup</a></li>
-
-      </ul>
-
-   
-
-
-  
-  <ul id="slide-out" class="side-nav">
-     <li><a href="#mission">Mission</a></li>
-        <li><a href = "#about_us">About Us</a></li>
-	<li><a href = "#services">Privacy Policy</a></li>
-	<li><a href = "#contact">Contact Us</a></li>
-	<li><a href = "login.php">Login</a></li>
-	<li><a href = "register.php">Signup</a></li>
-  </ul>
-  <a href="#home" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu" style="color:black;"></i></a>
-
-      
-    </div>
-
-  </nav>
-</div>
-
-  <div id="index-banner" class="parallax-container">
-
-    <div class="section no-pad-bot">
-      <div class="container">
-        <br><br>
-        <h1 style="color:black;"  class="header center cyan.lighten-3" font-weight=800 >Welcome To Proxy Solutions</h1>
-        <div class="row center">
-          <h5 class="header col s12  black-text text-accent-3">Post your requests and help others</h5>
-        </div>
-        <div class="row center">
-          <a href="register.php" id="download-button" class="btn-large waves-effect waves-light black-we-want">Get Started</a>
-        </div>
-        <br><br>
-
-      </div>
-    </div>
-    <div class="parallax" id="over"><img src="images/background1.jpg" alt="Unsplashed background img 1"></div>
-  </div>
-
-<a name="overview">
-  <div class="container">
-    <div class="section">
-
-      <!--   Icon Section   -->
-      <div class="row">
-        <div class="col s12 m4">
-          
-        </div>
-
-        <div class="col s12 m4">
-          
-        </div>
-
-        <div class="col s12 m4">
-          
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-<a id="overview">
-  <div class="parallax-container valign-wrapper">
-</a>
-    <!--<div class="section no-pad-bot">
-      <div class="container">
-        <div class="row center">
-          <h3 class="header col s12 -text">some statement here </h3>
-	  <h6 class="header col s12 white-text ">some statement here some statement here some statement here some statement here some statement here some statement here some statement here some statement here some statement here some statement here some statement here some statement here some statement here some statement here <h6>
-        </div>
-      </div>
-    </div>-->
-    <div class="parallax"><img src="background2.jpg" alt="Unsplashed background img 2"></div>
-  </div>
-<a id="mission">
-  <div class="container">
-</a>
-    <div class="section">
-
-      <div class="row">
-        <div class="col s12 center">
-          <h3><i class="material-icons"></i></h3>
-
-          <h4>Mission</h4>
-          <p class="left-align light"> As fellow college students we understand the miseries students have to undergo everyday while attending boring lectures. But no worries cause we are here. We at Proxy Solutions believe that its okay to not attend a lecture or two. And what we provide is a platform to getattendance even if you don't attend a lecture. So want to go to a movie date with your girfriend and attend first day first show, go ahead!! We got you covered. Want to grab some extra sleep, sure why not. Just setup an account and send proxy requests, we will hook you up with the right peeps!! Whats more, the service is absolutely free </p>
-        </div>
-      </div>
-
-    </div>
-  </div>
- <div class="parallax-container valign-wrapper">
-    <!--<div class="section no-pad-bot">
-      <div class="container">
-        <div class="row center">
-          <h3 class="header col s12 light">some statement here </h3>
 	
-	  <h2 class="header col s12 white-text">some statement here </h2>
-	  <h6 class="header col s12 white-text">some statement here some statement here some statement here some statement here some statement here some statement here some statement here some statement here some statement here some statement here some statement here some statement here <h6>		
-        </div>
-      </div>-->
-    </div>
-    <div class="parallax"><img src="background3.jpg" alt="Unsplashed background img 2"></div>
-  </div>
-<a id="about_us">
-  <div class="container">
-</a>
-    <div class="section">
+	
+}
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="icon" href="images/new.png" sizes="32x32">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Submit Request</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+  </script>
 
-      <div class="row">
-        <div class="col s12 center">
-          <h3><i class="material-icons"></i></h3>
-          <h4>About Us</h4>
-          <a href="https://www.facebook.com/khareabhinav"><p class="left-align light">Abhinav Khare</p></a>
-	<a href="https://www.facebook.com/sandeepksingh25"><p class="left-align light">Sandeep Kumar Singh</p></a>
-	<a href="https://www.facebook.com/padiashubham?fref=ts"><p class="left-align light">Shubham Padia</p></a>
+</head>
+<body style="background-color:#e0f2f1">
+<center>
+<div id="login-form">
+<form method="post">
+<table style="background-color:#ffffff" align="center" width="60%" border="0">
+<tr>
+<td colspan="50"><input type="text" id="datepicker" name="date" placeholder="DD/MM/YYYY" required /></td>
+</tr>
+<tr>
+<td colspan="50"><input type="text" name="user_id" placeholder="User Id" required /></td>
+</tr>
+<tr>
+<td colspan="50"><input type="teacher" name="teacher" placeholder="Teacher" required /></td>
+</tr>
+<tr>
+<td colspan="50"><a><span style = "color :black ">Batch</span></a></td>
+</tr>
+<tr>
+<td><input type="radio" name="batch" value="15" style="height:15px; width:15px;vertical-align: middle;" checked>B2K15</td>
+<td><input type="radio" name="batch" value="14" style="height:15px; width:15px;vertical-align: middle;"> B2K14</td>
+<td><input type="radio" name="batch" value="13" style="height:15px; width:15px;vertical-align: middle;"> B2K13</td>
+<td><input type="radio" name="batch" value="12" style="height:15px; width:15px;vertical-align: middle;"> B2K12</td>
+<td><input type="radio" name="batch" value="11" style="height:15px; width:15px;vertical-align: middle;"> B2K11</td>
+</tr>
 
-  <p class="left-align light"> We three are college students currently pursuing Bachelors in Technology from Indian Institute of Information Technology, Allahabad
-</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="parallax-container valign-wrapper">
-    <!--<div class="section no-pad-bot">
-      <div class="container">
-        <div class="row center">
-         <h2 class="header col s12 red-text text-darken-3">some statement here </h2>
-	  <h6 class="header col s12 red-text text-darken-3">some statement here some statement here some statement here some statement here some statement here some statement here some statement here some statement here </h6>	
-        </div>
-      </div>
-    </div>-->
-    <div class="parallax"><img src="background4.png" alt="Unsplashed background img 2"></div>
-  </div>
-<a id="services">
-  <div class="container">
-</a>
-    <div class="section">
-
-      <div class="row">
-        <div class="col s12 center">
-          <h3><i class="material-icons"></i></h3>
-          
-        <h4>Privacy Policy</h4>
-       <p class="left-align light"> This privacy policy sets out how Proxy Solution uses and protects any information that users give Proxy Solutions when they use this website. Proxy Solutions is committed to ensuring that your privacy is protected. If we ask you to provide certain information by which you can be identified when using this website, then you can be assured that it will only be used in accordance with this privacy statement. Proxy Solutions may change this policy from time to time by updating this page. You should check this page from time to time to ensure that you are happy with any changes.
-</p>
-<h5>Security</h5>
-<p class="left-align light"> We are committed to ensuring that your information is secure. In order to prevent unauthorized access or disclosure, we have put in place suitable physical, electronic and managerial procedures to safeguard and secure the information we collect online.
-</p>
-<h5>Want to know more?</h5>
-<p class="centre-align light"> Click <a href ="contact.html">here!</a>
-</p>
-
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-
-<a id="contact">
-  <div class="parallax-container valign-wrapper">
-</a>
-    <!--<div class="section no-pad-bot">
-
-      <div class="container">
-
-        <div class="row center">
-          <h2 class="header col s12 white-text">some statement here</h2>
-	  <h5 class="header col s12 red-text text-darken-3">some statement here </h5>
-<h5 class="header col s12 red-text">some statement here </h5>
-<h5 class="header col s12 red-text">some statement here </h5>	
-        </div>
-      </div>
-    </div>-->
-    <div class="parallax"><img src="background6.jpg" alt="Unsplashed background img 3"></div>
-  </div>
-
-  <footer class="page-footer black-we-want">
-    <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">Contact Us</h5>
-          <p class="white-text" >For hugs and bugs, shoot an email to any of us: </p>
-          <p class="white-text" >Abhinav Khare : iit2015036@iiita.ac.in</p>
-<p class="white-text">Sandeep Kumar Singh : iit2015014@iiita.ac.in</p>
-<p class="white-text">Shubham Padia : iit2015074@iiita.ac.in</p>
+<tr>
+<td colspan="50"><a><span style = "color :black ">Section</span></a></td>
+</tr>
+<tr>
+<td><input type="radio" name="section" value="a" style="height:15px; width:15px;vertical-align: middle;" checked>A</td>
+<td><input type="radio" name="section" value="b" style="height:15px; width:15px;vertical-align: middle;">B</td>
+<td><input type="radio" name="section" value="c" style="height:15px; width:15px;vertical-align: middle;">C</td>
+</tr>
+<tr>
+<td colspan="50"><a><span style = "color :black ">Treat Options</span></a></td>
+</tr>
+<tr>
+<td><input type="radio" name="treat" value="Cafeteria" style="height:15px; width:15px;vertical-align: middle;" checked>Cafeteria</td>
+<td><input type="radio" name="treat" value="Old Canteen" style="height:15px; width:15px;vertical-align: middle;">Old Canteen</td>
+<td><input type="radio" name="treat" value="Night Canteen" style="height:15px; width:15px;vertical-align: middle;">Night Canteen</td>
+<td><input type="radio" name="treat" value="None" style="height:15px; width:15px;vertical-align: middle;">None</td>
+<tr>
+<td colspan="100"><input type="textarea" name="other" placeholder="Other Treat Options"></td>
+</tr>
+<tr>
+<td colspan="50"><button type="submit" name="btn-signup">Add Proxy Request</button></td>
+</tr>
+<tr>
+<td><a href="afterlogin.php">Home</a></td>
+</tr>
+</table>
+</form>
 </div>
-        
-
-      </div>
-    </div>
-    
-  </footer>
-
-
-  <!--  Scripts-->
-
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="js/materialize.js"></script>
-  <script src="js/init.js"></script>
-
-  </body>
+</center>
+</body>
 </html>
