@@ -23,7 +23,7 @@ $body="Your verification code is ".$vercode."\n--Regards,\nProxy Point";
 $headers="From: proxypoint@proxypoint.com";
 if(mail($to, $subject, $body,$headers))
 {
-	mysql_query("UPDATE users SET ver_sent=1 WHERE user_id=".$_SESSION['user'])
+	mysql_query("UPDATE users SET ver_sent=1 WHERE user_id=".$_SESSION['user']);
 	header("Location: verify.php");
 }
 else
