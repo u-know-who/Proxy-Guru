@@ -1,71 +1,124 @@
-<?php
-session_start();
-include_once 'dbconnect.php';
-if(!isset($_SESSION['user'])!="")
+@charset "utf-8";
+/* CSS Document */
+
+*
 {
-	header("Location: index.php");
+	margin:0;
+	padding:0;
+}
+#login-form
+{
+	margin-top:70px;
+}
+table
+{
+	border:solid #dcdcdc 1px;
+	padding:25px;
+	box-shadow: 0px 0px 1px rgba(0,0,0,0.2);
+}
+table tr,td
+{
+	padding:15px;
+	//border:solid #e1e1e1 1px;
+}
+table tr td input
+{
+	width:97%;
+	height:45px;
+	border:solid #e1e1e1 1px;
+	border-radius:3px;
+	padding-left:10px;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:16px;
+	background:#f9f9f9;
+	transition-duration:0.5s;
+	box-shadow: inset 0px 0px 1px rgba(0,0,0,0.4);
 }
 
-$res=mysql_query("SELECT * FROM users WHERE user_id=".$_SESSION['user']);
-$userRow=mysql_fetch_array($res);
-$ver_sent=$userRow['ver_sent'];
-$ver_code=$userRow['ver_code'];
-$active=$userRow['active'];
-if($active==1)
+table tr td button
 {
-		header("Location: home.php");
+	width:100%;
+	height:45px;
+	border:0px;
+	background:rgba(12,45,78,11);
+	background:-moz-linear-gradient(top, #595959 , #515151);
+	border-radius:3px;
+	box-shadow: 1px 1px 1px rgba(1,0,0,0.2);
+	color:#f9f9f9;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:18px;
+	font-weight:bolder;
+	text-transform:uppercase;
 }
-if($ver_sent==0)
+table tr td button:active
 {
-	header("Location: mail.php");
-}  
-		
-if(isset($_POST['btn-signup']))
-{$vercode = mysql_real_escape_string($_POST['vercode']);
- $vercode=trim($vercode);
-if($vercode==$ver_code)
+	position:relative;
+	top:1px;
+}
+table tr td a
 {
-	if(mysql_query("UPDATE users SET active=1 WHERE user_id=".$_SESSION['user']))
-	{	
-		header("Location: home.php");
-	}
+	text-decoration:none;
+	color:#00a2d1;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:18px;
 }
-else
+
+/* css for home page  */
+
+*
 {
-	?>
-	<script>alert('wrong verification code');</script>
-	<?php
+	margin:0;
+	padding:0;
 }
+#header
+{
+	width:100%;
+	height:60px;
+	background:rgba(00,11,22,33);
+	color:#9fa8b0;
+	font-family:Verdana, Geneva, sans-serif;
 }
-?>
+#header #left
+{
+	float:left;
+	position:relative;
+}
+#header #left label
+{
+	position:relative;
+	top:5px;
+	left:100px;
+	font-size:35px;
+}
+#header #right
+{
+	float:right;
+	position:relative;
+}
+#header #right #content
+{
+	position:relative;
+	top:20px;
+	right:100px;
+	color:#fff;
+}
+#header #right #content a
+{
+	color:#00a2d1;
+}
+.central {
+  background-image:url("2n18j89.jpg");
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Register</title>
-<link rel="stylesheet" href="style.css" type="text/css" />
-</head>
-<body>
-<center>
-<div id="login-form">
-<form method="post">
-<table align="center" width="30%" border="0">
+#body
+{
+	text-align:center;
+	margin-top:150px;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:36px;
+}
 
-<tr>
-<td><input type="text" name="vercode" placeholder="Enter The Verification Code" required /></td>
-</tr>
-
-<tr>
-<td><button type="submit" name="btn-signup">submit</button></td>
-</tr>
-<tr>
-<td><a href="login.php">Sign In Here</a></td>
-</tr>
-</table>
-</form>
-</div>
-</center>
-</body>
-</html>
-
+/* css for home page */
