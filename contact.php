@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="msapplication-tap-highlight" content="no">
     <meta name="description" content="Materialize is a modern responsive CSS framework based on Material Design by Google. ">
-    <title>Profile</title>
+    <title>Contact</title>
     <!-- Favicons-->
    <link rel="icon" href="images/new.png" sizes="32x32">
     <meta name="msapplication-TileColor" content="#FFFFFF">
@@ -53,10 +53,11 @@
 
 
         <li class="bold"><a class=fo href="index.php" class="waves-effect waves-teal">Home</a></li>
-        <li class="bold"><a href="marketplace.php" class="waves-effect waves-teal">Marketplace</a></li>
+        <li class="bold"><a href="marketplace.php" class="waves-effect waves-teal">The Proxy Place</a></li>
         
         <li class="bold"><a href="myrequests.php" class="waves-effect waves-teal">My Requests</a></li>
         <li class="bold"><a href="contact.php" class="waves-effect waves-teal">Contact Us</a></li>
+          <li class="bold"><a href="logout.php" class="waves-effect waves-teal">Logout</a></li>
       </ul>
 
       </a>
@@ -69,22 +70,22 @@
 
 
 
-<footer class="page-footer black-we-want">
+
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
-          <h2 class="white-text">Contact Us</h2>
-          <p class="white-text" >For hugs and bugs, shoot an email to any of us: </p>
-          <p class="white-text" >Abhinav Khare : iit2015036@iiita.ac.in</p>
-<p class="white-text">Sandeep Kumar Singh : iit2015014@iiita.ac.in</p>
-<p class="white-text">Shubham Padia : iit2015074@iiita.ac.in</p>
+          <h2 class="left-align light" class="white-text">Contact Us</h2>
+          <p class="left-align light" class="white-text" >For hugs and bugs, shoot an email to any of us: </p>
+          <p class="left-align light" class="white-text" >Abhinav Khare : iit2015036@iiita.ac.in</p>
+<p class="left-align light" class="white-text">Sandeep Kumar Singh : iit2015014@iiita.ac.in</p>
+<p class="left-align light" class="white-text">Shubham Padia : iit2015074@iiita.ac.in</p>
 </div>
         
 
       </div>
     </div>
     
-  </footer>
+
 
 
 
