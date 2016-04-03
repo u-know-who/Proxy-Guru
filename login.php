@@ -16,7 +16,7 @@ if(isset($_POST['btn-login']))
 	$email = trim($email);
 	$upass = trim($upass);
 	
-	$res=mysql_query("SELECT user_id, user_name, user_pass FROM users WHERE user_email='$email'");
+	$res=mysql_query("SELECT * FROM users WHERE user_email='$email'");
 	$row=mysql_fetch_array($res);
 	
 	$count = mysql_num_rows($res); // if uname/pass correct it must return row
@@ -24,7 +24,7 @@ if(isset($_POST['btn-login']))
 	if($count == 1 && $row['user_pass']==md5($upass))
 	{
 		$_SESSION['user'] = $row['user_id'];
-		header("Location: home.php");
+		header("Location: afterlogin.php");
 	}
 	else
 	{
@@ -39,7 +39,7 @@ if(isset($_POST['btn-login']))
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Padia Associates</title>
+<title>Proxy Guru</title>
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 <body>
